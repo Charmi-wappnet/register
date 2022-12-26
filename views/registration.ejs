@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <title>Registration</title>
+    <script>
+        function validate() {  
+            var first_name= document.reg_form.first_name;
+            var last_name= document.reg_form.last_name;
+            var password = document.reg_form.password;
+            var confirm_password = document.reg_form.confirm_password;
+            var email_address= document.reg_form.email_address;
+             
+
+
+            if (first_name.value.length <= 0) {  
+            alert("Name is required");  
+            first_name.focus();  
+            return false;  
+            }
+           
+            if (last_name.value.length <= 0) {  
+            alert("Last name is required");  
+            last_name.focus();  
+            return false;  
+           }
+            
+           if (password.value.length <= 0) {    
+                alert("Enter password");    
+                password.focus();    
+                return false;    
+            }
+
+           if (confirm_password.value.length <= 0) {  
+            alert("conform password is required");  
+            confirm_password.focus();  
+            return false;  
+           }
+            
+            if (email_address.value.length <= 0) {  
+            alert("Enter email");  
+            email_address.focus();  
+            return false;  
+           }
+    }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <h1>Registration Form</h1>
+        <p><%=(typeof alertMsg!='undefined')? alertMsg:''%></p>
+              <form action="http://localhost:3000/register" name="reg_form" method="POST" onSubmit="return validate();">
+             <input type="hidden" e="id">
+            <div class="form-gruop">
+                 <label for="first_name" class="form-label">First Name</label>
+                 <input type="text" class="form-control" name="first_name"   placeholder="Enter first name">
+            </div><br>
+
+            <div class="form-gruop">
+                <label for="last_name" class="form-label">Last Name</label>
+                <input type="text" class="form-control" name="last_name"  placeholder="Enter last name">
+           </div><br>
+            
+           <div class="form-gruop">
+            <label for="password" class="form-label">Password</label>
+            <input type="password" class="form-control" name="password"  placeholder="Enter your password">
+           </div><br>
+
+           <div class="form-gruop">
+            <label for="password" class="form-label">Confirm Password</label>
+            <input type="password" class="form-control" name="confirm_password" placeholder="Re-Enter password">
+           </div><br>
+
+           <div class="form-gruop">
+            <label for="email" class="form-label">Email ID</label>
+            <input type="email" class="form-control" name="email_address" placeholder="Enter your email id">
+            </div><br>
+
+           <div class="form-container"> 
+            <lable for="gender" class="form-lable">Gender</lable><br>
+            <div><input type="radio" value="male" name="gender"  required><label>Male</label>
+             <input type="radio" value="female" name="gender"  required><label>Female</label>
+           </div> <br>
+
+           <div class="form-container">
+            <lable for="image" class="form-lable">Image</lable><br>
+              <br>  <input type="file" value="image" name="image" />
+            </div><br>
+          
+           <button type="submit" class="btn btn-primary" >Submit</button>
+       </form>   
+    </div>    
+</body>
+</html>
