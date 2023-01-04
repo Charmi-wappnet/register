@@ -13,9 +13,8 @@
             var password = document.reg_form.password;
             var confirm_password = document.reg_form.confirm_password;
             var email_address= document.reg_form.email_address;
-             
-
-
+            var image = document.reg_form.image;
+            
             if (first_name.value.length <= 0) {  
             alert("Name is required");  
             first_name.focus();  
@@ -41,8 +40,14 @@
            }
             
             if (email_address.value.length <= 0) {  
-            alert("Enter email");  
+            alert("Please enter email address");  
             email_address.focus();  
+            return false;  
+           }
+
+           if (image.value.length <= 0) {  
+            alert("Please select image");  
+            image.focus();  
             return false;  
            }
     }
@@ -52,7 +57,7 @@
     <div class="container">
         <h1>Registration Form</h1>
         <p><%=(typeof alertMsg!='undefined')? alertMsg:''%></p>
-              <form action="http://localhost:3000/register" name="reg_form" method="POST" onSubmit="return validate();">
+              <form action="register" name="reg_form" method="POST" onSubmit="return validate();">
              <input type="hidden" e="id">
             <div class="form-gruop">
                  <label for="first_name" class="form-label">First Name</label>
@@ -81,8 +86,8 @@
 
            <div class="form-container"> 
             <lable for="gender" class="form-lable">Gender</lable><br>
-            <div><input type="radio" value="male" name="gender"  required><label>Male</label>
-             <input type="radio" value="female" name="gender"  required><label>Female</label>
+            <div><input type="radio" value="male" name="gender"><label>Male</label>
+             <input type="radio" value="female" name="gender"><label>Female</label>
            </div> <br>
 
            <div class="form-container">
